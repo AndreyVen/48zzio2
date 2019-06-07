@@ -1,0 +1,33 @@
+# /etc/conf.d/vendettad: config file for /etc/init.d/vendettad
+
+# Config file location
+#VENDETTAD_CONFIGFILE="/etc/vendetta/vendetta.conf"
+
+# What directory to write pidfile to?  (created and owned by $VENDETTAD_USER)
+#VENDETTAD_PIDDIR="/var/run/vendettad"
+
+# What filename to give the pidfile
+#VENDETTAD_PIDFILE="${VENDETTAD_PIDDIR}/vendettad.pid"
+
+# Where to write vendettad data (be mindful that the blockchain is large)
+#VENDETTAD_DATADIR="/var/lib/vendettad"
+
+# User and group to own vendettad process
+#VENDETTAD_USER="vendetta"
+#VENDETTAD_GROUP="vendetta"
+
+# Path to vendettad executable
+#VENDETTAD_BIN="/usr/bin/vendettad"
+
+# Nice value to run vendettad under
+#VENDETTAD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#VENDETTAD_OPTS=""
+
+# The timeout in seconds OpenRC will wait for vendettad to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+VENDETTAD_SIGTERM_TIMEOUT=60

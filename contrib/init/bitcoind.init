@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+#
+#  vendettad The vendetta core server.
+#
+#
+# chkconfig: 345 80 20
+# description: vendettad
+# processname: vendettad
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/vendettad, see below
+if [ -f /etc/sysconfig/vendettad ]; then
+        . /etc/sysconfig/vendettad
+fi
+
+RETVAL=0
+
+prog=vendettad
+# you can override the lockfile via VENDETTAD_LOCKFILE in /etc/sysconfig/vendettad
+lockfile=${VENDETTAD_LOCKFILE-/var/lock/subsys/vendettad}
+
+# vendettad defaults to /usr/bin/vendettad, override with VENDETTAD_BIN
+vendettad=${VENDETTAD_BIN-/usr/bin/vendettad}
+
+# vendettad opts default to -disablewallet, override with VENDETTAD_OPTS
+vendettad_opts=${VENDETTAD_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $vendettad $vendettad_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

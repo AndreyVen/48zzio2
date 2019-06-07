@@ -1,0 +1,7 @@
+sudo ./vendetta-qt -datadir=$HOME/.vendetta -addnode=127.0.0.1:10003 -port=10001 -rpcport=10002 -debug=rpc -dns=0 -dnsseed=0 -printtoconsole
+sudo ./vendetta-qt -datadir=$HOME/.vendetta2 -addnode=127.0.0.1:10001 -port=10003 -rpcport=10004 -debug=rpc -dns=0 -dnsseed=0 -printtoconsole
+./minerd --user test --pass x --url http://127.0.0.1:10002/ --threads 4 --coinbase-addr  --coinbase-sig "remember" -a sha256d -D
+
+
+rpcuser=text
+rpcpassword=x

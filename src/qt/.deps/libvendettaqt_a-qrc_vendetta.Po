@@ -1,0 +1,4 @@
+qt/libvendettaqt_a-qrc_vendetta.o: qt/qrc_vendetta.cpp \
+ /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:

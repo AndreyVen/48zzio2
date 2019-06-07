@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Vendetta Core consensus library
+Description: Library for the Vendetta consensus protocol.
+Version: 0.17.1
+Libs: -L${libdir} -lvendettaconsensus
+Cflags: -I${includedir}
+Requires.private: libcrypto
